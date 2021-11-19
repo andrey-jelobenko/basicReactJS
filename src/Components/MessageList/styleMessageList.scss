@@ -1,0 +1,15 @@
+.message_list {
+  list-style-type: none;
+  text-align: left;
+  font-size: 16px;
+  padding-left: 0;
+}
+
+.message_list__author {
+  font-style: italic;
+  font-size: 22px;
+}
+
+.message_list__text {
+  margin: 5px 0 30px;
+}

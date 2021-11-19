@@ -1,0 +1,20 @@
+.message-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.message-form__text {
+  height: 120px;
+  resize: none;
+}
+
+.message-form__submit {
+  width: 100px;
+  align-self: end;
+}
+
+.message-form__text,
+.message-form__author {
+  outline: none;
+}
