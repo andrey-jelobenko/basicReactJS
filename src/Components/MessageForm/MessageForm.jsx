@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import "./styleMessageForm.scss";
 
 export function MessageForm({ messageList, setMessageList }) {
@@ -13,7 +14,11 @@ export function MessageForm({ messageList, setMessageList }) {
       return alert("не заполнены необходимые данные");
     if (messageAuthor === "бот")
       return alert("вы не можете оставлять сообщения от этого имени");
-    const newMessage = { author: messageAuthor, text: messageText };
+    const newMessage = {
+      id: uuidv4(),
+      author: messageAuthor,
+      text: messageText,
+    };
     setMessageAuthor("");
     setMessageText("");
     return setMessageList([...messageList, newMessage]);
@@ -31,13 +36,13 @@ export function MessageForm({ messageList, setMessageList }) {
         className="message-form__author"
         value={messageAuthor}
         onChange={handleAuthorChange}
-        placeholder="имя"
+        placeholder="ваше имя"
       />
       <textarea
         className="message-form__text"
         value={messageText}
         onChange={handleTextChange}
-        placeholder="сообщение"
+        placeholder="текст сообщения"
       ></textarea>
       <input
         className="message-form__submit"

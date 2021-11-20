@@ -1,11 +1,14 @@
 .message-form {
   display: flex;
   flex-direction: column;
-  width: 300px;
+}
+
+.message-form__author {
+  max-width: 200px;
 }
 
 .message-form__text {
-  height: 120px;
+  height: 65px;
   resize: none;
 }
 
