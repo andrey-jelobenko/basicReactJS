@@ -53,7 +53,6 @@ export function MessageForm({ messageList, setMessageList }) {
         value={messageAuthor}
         onChange={handleAuthorChange}
         size="small"
-        margin="dense"
         inputRef={inputRef}
       />
       <TextField
@@ -64,10 +63,9 @@ export function MessageForm({ messageList, setMessageList }) {
         value={messageText}
         onChange={handleTextChange}
         size="small"
-        margin="dense"
+        sx={{ mb: "0.6em", mt: "0.2em" }}
       />
-      <div className="margin-1"></div>
-      <Stack direction="row" spacing={2}>
+      <Stack direction="row" spacing={1} sx={{ mb: "0.6em" }}>
         <Button
           variant="outlined"
           startIcon={<DeleteIcon />}
@@ -79,7 +77,6 @@ export function MessageForm({ messageList, setMessageList }) {
           отправить
         </Button>
       </Stack>
-      <div className="margin-1"></div>
     </form>
   );
 }

@@ -1,10 +1,10 @@
 .App {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
+  /* max-width: 1200px; */
+  /* margin: 0 auto; */
+  /* padding: 0 10px; */
+  /* display: flex;
   flex-direction: row-reverse;
-  justify-content: center;
+  justify-content: center; */
 }
 
 .App-header {
@@ -22,7 +22,7 @@
   grid-template-rows: auto 1fr -webkit-min-content;
   grid-template-rows: auto 1fr min-content;
   max-width: 930px;
-  flex-grow: 1;
+  /* flex-grow: 1; */
 }
 
 .chat-list {
@@ -31,9 +31,9 @@
   /* flex-grow: 1; */
 }
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
   .App {
     flex-wrap: wrap;
     justify-content: flex-end;
   }
-}
+} */

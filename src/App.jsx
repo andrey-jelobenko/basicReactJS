@@ -1,3 +1,4 @@
+import Grid from "@mui/material/Grid";
 import { useState, useEffect } from "react";
 import { MessageList } from "./Components/MessageList";
 import { MessageForm } from "./Components/MessageForm";
@@ -30,8 +31,11 @@ function App() {
   }, [messageList]);
 
   return (
-    <div className="App">
-      <div className="chat">
+    <Grid container spacing={1} className="App">
+      <Grid item xs={12} sm={4} md={3} className="chat-list">
+        <ChatList />
+      </Grid>
+      <Grid item xs={12} sm={8} md={9} className="chat">
         <header className="App-header">чат группы ReactJS 12.11</header>
         <main className="App-main">
           <MessageList messageList={messageList} />
@@ -42,11 +46,8 @@ function App() {
             setMessageList={setMessageList}
           />
         </footer>
-      </div>
-      <div className="chat-list">
-        <ChatList />
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   );
 }
 
