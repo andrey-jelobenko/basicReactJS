@@ -2,10 +2,38 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
 }
 
 .App-header {
   font-size: 1.6em;
   font-weight: 700;
-  color: chocolate;
+  color: #f4511e;
+  text-align: center;
+}
+
+.chat {
+  display: -ms-grid;
+  display: grid;
+  min-height: 100vh;
+  -ms-grid-rows: auto 1fr min-content;
+  grid-template-rows: auto 1fr -webkit-min-content;
+  grid-template-rows: auto 1fr min-content;
+  max-width: 930px;
+  flex-grow: 1;
+}
+
+.chat-list {
+  /* min-width: 250px;
+  padding: 10px 20px 10px 0; */
+  /* flex-grow: 1; */
+}
+
+@media (max-width: 767px) {
+  .App {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
 }

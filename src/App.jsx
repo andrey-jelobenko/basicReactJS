@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { MessageList } from "./Components/MessageList";
 import { MessageForm } from "./Components/MessageForm";
+import { ChatList } from "./Components/ChatList/ChatList";
 import { v4 as uuidv4 } from "uuid";
 import "./App.css";
 
@@ -18,7 +19,7 @@ function App() {
   const [messageList, setMessageList] = useState([INITIAL_MESSAGES]);
 
   useEffect(() => {
-    let timer;
+    let timer = null;
     if (messageList[messageList.length - 1].author !== "бот")
       timer = setTimeout(() => {
         setMessageList([...messageList, BOT_MESSAGES]);
@@ -30,15 +31,21 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">чат группы ReactJS 12.11</header>
-      <main className="App-main">
-        <MessageList messageList={messageList} />
-        <MessageForm
-          messageList={messageList}
-          setMessageList={setMessageList}
-        />
-      </main>
-      <footer className="App-footer"></footer>
+      <div className="chat">
+        <header className="App-header">чат группы ReactJS 12.11</header>
+        <main className="App-main">
+          <MessageList messageList={messageList} />
+        </main>
+        <footer className="App-footer">
+          <MessageForm
+            messageList={messageList}
+            setMessageList={setMessageList}
+          />
+        </footer>
+      </div>
+      <div className="chat-list">
+        <ChatList />
+      </div>
     </div>
   );
 }

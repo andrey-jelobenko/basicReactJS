@@ -7,11 +7,6 @@
   max-width: 200px;
 }
 
-.message-form__text {
-  height: 65px;
-  resize: none;
-}
-
 .message-form__submit {
   width: 100px;
   align-self: end;
@@ -20,4 +15,8 @@
 .message-form__text,
 .message-form__author {
   outline: none;
+}
+
+.margin-1 {
+  margin-top: 1em;
 }

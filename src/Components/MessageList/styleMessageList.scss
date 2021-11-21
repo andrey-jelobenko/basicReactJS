@@ -5,20 +5,29 @@
 }
 
 .message_list__block {
-  padding: 10px;
-  margin: 10px 0;
-  background-color: rgb(179, 233, 175);
-  border-radius: 10px;
+  margin-left: 16px;
+  padding: 6px 16px;
+  background-color: rgb(50, 50, 50);
+  border-radius: 5px;
   width: fit-content;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  color: #fff;
+}
+
+.message_list-block {
+  display: flex;
+  align-items: flex-end;
+  margin: 10px;
 }
 
 .message_list__author {
   font-style: italic;
-  font-size: 0.8em;
+  font-size: 1em;
   font-weight: 700;
 }
 
 .message_list__text {
   margin: 5px 0;
-  font-size: 0.8em;
+  font-size: 1em;
 }
