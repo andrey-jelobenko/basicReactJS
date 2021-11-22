@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import TextField from "@mui/material/TextField";
+import FormGroup from "@mui/material/FormGroup";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
@@ -8,20 +9,20 @@ import { v4 as uuidv4 } from "uuid";
 import { BasicModal } from "../Utils/BasicModal";
 import "./styleMessageForm.scss";
 
-export function MessageForm({ messageList, setMessageList }) {
+export function MessageForm({ messageList, setMessageList }: any) {
   const [messageAuthor, setMessageAuthor] = useState("");
   const [messageText, setMessageText] = useState("");
   const [modal, setModal] = useState(false);
   const [messageAlert, setMessageAlert] = useState("");
-  const inputRef = useRef(null);
+  const inputRef: any = useRef(null);
 
   useEffect(() => {
     inputRef.current?.focus();
   }, [messageAuthor]);
 
-  const handleAuthorChange = (e) => setMessageAuthor(e.target.value);
-  const handleTextChange = (e) => setMessageText(e.target.value);
-  const handleAdd = (e) => {
+  const handleAuthorChange = (e: any) => setMessageAuthor(e.target.value);
+  const handleTextChange = (e: any) => setMessageText(e.target.value);
+  const handleAdd = (e: any) => {
     if (messageAuthor === "" || messageText === "") {
       setModal(true);
       setMessageAlert("Не указаны необходимые данные");
@@ -41,17 +42,16 @@ export function MessageForm({ messageList, setMessageList }) {
     setMessageText("");
     return setMessageList([...messageList, newMessage]);
   };
-  const handleReset = (e) => {
+  const handleReset = (e: any) => {
     setMessageAuthor("");
     setMessageText("");
   };
 
   return (
     <>
-      <form
+      <FormGroup
         className="message-form"
-        action="#"
-        onSubmit={(e) => {
+        onSubmit={(e: any) => {
           e.preventDefault();
         }}
       >
@@ -91,7 +91,7 @@ export function MessageForm({ messageList, setMessageList }) {
             отправить
           </Button>
         </Stack>
-      </form>
+      </FormGroup>
       <BasicModal
         modal={modal}
         setModal={setModal}

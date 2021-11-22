@@ -15,13 +15,12 @@
   color: #fff;
 }
 
-.message_list-block {
-  display: flex;
-  align-items: flex-end;
-  margin: 10px;
+.message_list-img {
+  align-self: flex-start;
 }
 
 .message_list__author {
+  text-decoration: underline;
   font-style: italic;
   font-size: 1em;
   font-weight: 700;

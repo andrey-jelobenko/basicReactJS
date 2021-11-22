@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
-const style = {
+const style: any = {
   position: "absolute",
   top: "40%",
   left: "50%",
@@ -16,7 +16,7 @@ const style = {
   textAlign: "center",
 };
 
-export function BasicModal({ modal, setModal, messageAlert }) {
+export function BasicModal({ modal, setModal, messageAlert }: any) {
   const [open, setOpen] = useState(false);
   const handleClose = () => {
     setModal(false);
