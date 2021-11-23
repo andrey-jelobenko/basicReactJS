@@ -1,16 +1,16 @@
 import { useState, useEffect, useRef } from "react";
 import TextField from "@mui/material/TextField";
-import FormGroup from "@mui/material/FormGroup";
-import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
-import Stack from "@mui/material/Stack";
 import { v4 as uuidv4 } from "uuid";
 import { BasicModal } from "../Utils/BasicModal";
+import { USERS } from "./../MessageList/constants";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 import "./styleMessageForm.scss";
 
 export function MessageForm({ messageList, setMessageList }: any) {
-  const [messageAuthor, setMessageAuthor] = useState("");
+  const [author] = useState(USERS.me);
   const [messageText, setMessageText] = useState("");
   const [modal, setModal] = useState(false);
   const [messageAlert, setMessageAlert] = useState("");
@@ -18,80 +18,76 @@ export function MessageForm({ messageList, setMessageList }: any) {
 
   useEffect(() => {
     inputRef.current?.focus();
-  }, [messageAuthor]);
+  }, [messageText]);
 
-  const handleAuthorChange = (e: any) => setMessageAuthor(e.target.value);
   const handleTextChange = (e: any) => setMessageText(e.target.value);
-  const handleAdd = (e: any) => {
-    if (messageAuthor === "" || messageText === "") {
+  const handleAddMessage = (e: any) => {
+    if (messageText.trim() === "") {
       setModal(true);
-      setMessageAlert("Не указаны необходимые данные");
+      setMessageAlert("Вы ничего не написали ...");
       return;
     }
-    if (messageAuthor === "бот") {
+    if (author === USERS.bot) {
       setModal(true);
       setMessageAlert("Вы не можете оставлять сообщения от этого имени");
       return;
     }
     const newMessage = {
       id: uuidv4(),
-      author: messageAuthor,
+      author: author,
       text: messageText,
     };
-    setMessageAuthor("");
+
     setMessageText("");
     return setMessageList([...messageList, newMessage]);
   };
   const handleReset = (e: any) => {
-    setMessageAuthor("");
     setMessageText("");
   };
 
   return (
     <>
-      <FormGroup
-        className="message-form"
-        onSubmit={(e: any) => {
-          e.preventDefault();
+      <Typography
+        component="form"
+        sx={{
+          p: "2px 4px",
+          display: "flex",
+          alignItems: "flex-end",
         }}
       >
-        <TextField
-          id="outlined-basic"
-          label="ваше имя"
-          variant="outlined"
-          className="message-form__author"
-          value={messageAuthor}
-          onChange={handleAuthorChange}
-          size="small"
-          inputRef={inputRef}
-        />
         <TextField
           id="outlined-textarea"
           label="написать сообщение..."
           multiline
-          className="message-form__text"
           value={messageText}
           onChange={handleTextChange}
+          inputRef={inputRef}
           size="small"
-          sx={{ mb: "0.6em", mt: "0.6em" }}
+          sx={{ mb: "0.6em", mt: "0.6em", flexGrow: 1 }}
         />
-        <Stack direction="row" spacing={1} sx={{ mb: "0.6em" }}>
-          <Button
-            variant="outlined"
-            startIcon={<DeleteIcon />}
-            onClick={handleReset}
-          >
-            очистить
-          </Button>
-          <Button
-            variant="contained"
-            endIcon={<SendIcon />}
-            onClick={handleAdd}
-          >
-            отправить
-          </Button>
-        </Stack>
-      </FormGroup>
+        <IconButton
+          color="primary"
+          aria-label="directions"
+          onClick={handleReset}
+          sx={{
+            p: "10px 5px 10px 20px",
+            mb: "7px",
+          }}
+        >
+          <DeleteIcon />
+        </IconButton>
+        <IconButton
+          color="primary"
+          sx={{
+            p: "8px",
+            mb: "9px",
+          }}
+          aria-label="directions"
+          onClick={handleAddMessage}
+        >
+          <SendIcon />
+        </IconButton>
+      </Typography>
       <BasicModal
         modal={modal}
         setModal={setModal}
