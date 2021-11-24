@@ -14,11 +14,12 @@ export function MessageForm({ messageList, setMessageList }: any) {
   const [messageText, setMessageText] = useState("");
   const [modal, setModal] = useState(false);
   const [messageAlert, setMessageAlert] = useState("");
+  const [focus, setFocus] = useState(true);
   const inputRef: any = useRef(null);
 
   useEffect(() => {
     inputRef.current?.focus();
-  }, [messageText]);
+  }, [messageText, focus]);
 
   const handleTextChange = (e: any) => setMessageText(e.target.value);
   const handleAddMessage = (e: any) => {
@@ -43,6 +44,7 @@ export function MessageForm({ messageList, setMessageList }: any) {
   };
   const handleReset = (e: any) => {
     setMessageText("");
+    inputRef.current?.focus();
   };
 
   return (
@@ -63,14 +65,14 @@ export function MessageForm({ messageList, setMessageList }: any) {
           onChange={handleTextChange}
           inputRef={inputRef}
           size="small"
-          sx={{ mb: "0.6em", mt: "0.6em", flexGrow: 1 }}
+          sx={{ mb: "0.6em", mt: "0.6em", mr: "10px", flexGrow: 1 }}
         />
         <IconButton
           color="primary"
           aria-label="directions"
           onClick={handleReset}
           sx={{
-            p: "10px 5px 10px 20px",
+            p: "10px",
             mb: "7px",
           }}
         >
@@ -79,8 +81,8 @@ export function MessageForm({ messageList, setMessageList }: any) {
         <IconButton
           color="primary"
           sx={{
-            p: "8px",
-            mb: "9px",
+            p: "10px",
+            mb: "7px",
           }}
           aria-label="directions"
           onClick={handleAddMessage}
@@ -92,6 +94,8 @@ export function MessageForm({ messageList, setMessageList }: any) {
         modal={modal}
         setModal={setModal}
         messageAlert={messageAlert}
+        focus={focus}
+        setFocus={setFocus}
       />
     </>
   );

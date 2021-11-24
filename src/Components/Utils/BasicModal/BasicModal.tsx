@@ -16,11 +16,18 @@ const style: any = {
   textAlign: "center",
 };
 
-export function BasicModal({ modal, setModal, messageAlert }: any) {
+export function BasicModal({
+  modal,
+  setModal,
+  messageAlert,
+  focus,
+  setFocus,
+}: any) {
   const [open, setOpen] = useState(false);
   const handleClose = () => {
     setModal(false);
     setOpen(false);
+    setFocus(!focus);
   };
 
   useEffect(() => {
