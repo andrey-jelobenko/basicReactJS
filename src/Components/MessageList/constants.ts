@@ -1,13 +1,14 @@
+import { v4 as uuidv4 } from "uuid";
 export const USERS = { bot: "чат-бот", me: "Андрей" };
 
 export const INITIAL_MESSAGES = [
   {
-    id: "",
+    id: uuidv4(),
     author: USERS.bot,
     text: "Добро пожаловать в наш чат.",
   },
   {
-    id: "",
+    id: uuidv4(),
     author: USERS.bot,
     text: "Здесь вы можете оставить сообщение на любую интересующую вас тему.",
   },

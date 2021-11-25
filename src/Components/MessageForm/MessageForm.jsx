@@ -1,28 +1,26 @@
 import { useState, useEffect, useRef } from "react";
-import TextField from "@mui/material/TextField";
+import { TextField, Typography, IconButton } from "@mui/material/";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 import { v4 as uuidv4 } from "uuid";
 import { BasicModal } from "../Utils/BasicModal";
-import { USERS } from "./../MessageList/constants";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
+import { USERS } from "../MessageList/constants";
 import "./styleMessageForm.scss";
 
-export function MessageForm({ messageList, setMessageList }: any) {
-  const [author] = useState(USERS.me);
+export function MessageForm({ messageList, setMessageList }) {
+  const author = USERS.me;
   const [messageText, setMessageText] = useState("");
   const [modal, setModal] = useState(false);
   const [messageAlert, setMessageAlert] = useState("");
   const [focus, setFocus] = useState(true);
-  const inputRef: any = useRef(null);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     inputRef.current?.focus();
   }, [messageText, focus]);
 
-  const handleTextChange = (e: any) => setMessageText(e.target.value);
-  const handleAddMessage = (e: any) => {
+  const handleTextChange = (e) => setMessageText(e.target.value);
+  const handleAddMessage = (e) => {
     if (messageText.trim() === "") {
       setModal(true);
       setMessageAlert("Вы ничего не написали ...");
@@ -42,7 +40,7 @@ export function MessageForm({ messageList, setMessageList }: any) {
     setMessageText("");
     return setMessageList([...messageList, newMessage]);
   };
-  const handleReset = (e: any) => {
+  const handleReset = (e) => {
     setMessageText("");
     inputRef.current?.focus();
   };

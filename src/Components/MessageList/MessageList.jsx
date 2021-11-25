@@ -1,16 +1,19 @@
-import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import { v4 as uuidv4 } from "uuid";
+import { Avatar, Box, Typography, List, ListItem } from "@mui/material/";
 import "./styleMessageList.scss";
 
-export function MessageList({ messageList }: any) {
+export function MessageList({ messageList }) {
   return (
     <List>
-      {messageList.map(({ author, text }: any) => (
-        <ListItem key={uuidv4()}>
+      <Typography
+        variant="h4"
+        gutterBottom
+        component="h1"
+        className="message_list__title"
+      >
+        чат группы ReactJS 12.11
+      </Typography>
+      {messageList.map(({ id, author, text }) => (
+        <ListItem key={id}>
           <Avatar
             className="message_list-img"
             src="/broken-image.jpg"
