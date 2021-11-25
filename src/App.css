@@ -1,11 +1,10 @@
-.App {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.App-header {
-  font-size: 1.6em;
-  font-weight: 700;
-  color: chocolate;
+.chat {
+  display: -ms-grid;
+  display: grid;
+  min-height: 100vh;
+  -ms-grid-rows: auto 1fr min-content;
+  grid-template-rows: auto 1fr -webkit-min-content;
+  grid-template-rows: auto 1fr min-content;
+  max-width: 930px;
+  /* flex-grow: 1; */
 }
