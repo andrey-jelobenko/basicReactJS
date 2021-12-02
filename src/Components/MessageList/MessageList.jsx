@@ -1,7 +1,7 @@
 import { Avatar, Box, Typography, List, ListItem } from "@mui/material/";
 import "./styleMessageList.scss";
 
-export function MessageList({ messageList }) {
+export function MessageList({ messageList, chatName }) {
   return (
     <List>
       <Typography
@@ -10,7 +10,7 @@ export function MessageList({ messageList }) {
         component="h1"
         className="message_list__title"
       >
-        чат группы ReactJS 12.11
+        {chatName}
       </Typography>
       {messageList.map(({ id, author, text }) => (
         <ListItem key={id}>

@@ -7,7 +7,7 @@ import { BasicModal } from "../Utils/BasicModal";
 import { USERS } from "../MessageList/constants";
 import "./styleMessageForm.scss";
 
-export function MessageForm({ messageList, setMessageList }) {
+export function MessageForm({ messageList, setMessageList, chatId }) {
   const author = USERS.me;
   const [messageText, setMessageText] = useState("");
   const [modal, setModal] = useState(false);
@@ -18,6 +18,8 @@ export function MessageForm({ messageList, setMessageList }) {
   useEffect(() => {
     inputRef.current?.focus();
   }, [messageText, focus]);
+
+  if (chatId === "id0") return <></>;
 
   const handleTextChange = (e) => setMessageText(e.target.value);
   const handleAddMessage = (e) => {
