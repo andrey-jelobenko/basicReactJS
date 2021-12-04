@@ -1,5 +1,6 @@
 import { Grid } from "@mui/material/";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { myChatListContext } from "../../Router/context";
 import { useParams, Redirect } from "react-router-dom";
 import { MessageList } from "../../Components/MessageList";
 import { MessageForm } from "../../Components/MessageForm";
@@ -9,8 +10,9 @@ import { INIT_CHATS } from "../../Components/ChatList/constants";
 import { ROUTES } from "../../Router/constants";
 import { v4 as uuidv4 } from "uuid";
 
-export const Chats = ({ chatList }) => {
+export const Chats = () => {
   let { chatId } = useParams();
+  const chatList = useContext(myChatListContext);
 
   if (!INIT_CHATS[chatId]) chatId = "id0";
 
@@ -43,12 +45,12 @@ export const Chats = ({ chatList }) => {
   return (
     <Grid container spacing={1} className="Home">
       <Grid item xs={12} sm={4} md={3} lg={2} className="chat-list">
-        <ChatList chatList={chatList} />
+        <ChatList />
       </Grid>
       <Grid item xs={12} sm={8} md={9} lg={10}>
         <MessageList
           messageList={messageList}
-          chatName={INIT_CHATS[chatId].name}
+          chatName={chatList[chatId].name}
         />
         <MessageForm
           chatId={chatId}

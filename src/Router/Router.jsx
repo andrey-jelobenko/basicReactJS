@@ -8,29 +8,29 @@ import { ROUTES } from "./constants";
 import { Header } from "./Header";
 
 import { INIT_CHATS } from "../Components/ChatList/constants";
+import { myChatListContext } from "./context";
 
 export const Router = () => {
   const [chatList] = useState(INIT_CHATS);
   return (
     <BrowserRouter>
       <Header />
-      <Switch>
-        <Route exact path={ROUTES.HOME}>
-          <Home />
-        </Route>
-        <Route
-          path={ROUTES.CHATS}
-          render={() => <Chats chatList={chatList} />}
-        ></Route>
-        <Route path={ROUTES.NO_CHAT}>
-          <ChatList chatList={chatList} />
-        </Route>
-        <Route path={ROUTES.PROFILE} component={Profile}></Route>
-        <Route path={ROUTES.NOT_FOUND}>Not found</Route>
-        <Route>
-          <Redirect to={ROUTES.NOT_FOUND} />
-        </Route>
-      </Switch>
+      <myChatListContext.Provider value={chatList}>
+        <Switch>
+          <Route exact path={ROUTES.HOME}>
+            <Home />
+          </Route>
+          <Route path={ROUTES.CHATS} render={() => <Chats />}></Route>
+          <Route path={ROUTES.NO_CHAT}>
+            <ChatList />
+          </Route>
+          <Route path={ROUTES.PROFILE} component={Profile}></Route>
+          <Route path={ROUTES.NOT_FOUND}>Not found</Route>
+          <Route>
+            <Redirect to={ROUTES.NOT_FOUND} />
+          </Route>
+        </Switch>
+      </myChatListContext.Provider>
     </BrowserRouter>
   );
 };

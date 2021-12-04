@@ -9,8 +9,11 @@ import {
 import { deepOrange } from "@mui/material/colors";
 // import { chatList, INIT_CHATS } from "./constants";
 import "./ChatList.scss";
+import { useContext } from "react";
+import { myChatListContext } from "../../Router/context";
 
-export function ChatList({ chatList }) {
+export function ChatList() {
+  const chatList = useContext(myChatListContext);
   const newChatList = { ...chatList };
   delete newChatList["id0"];
   return (

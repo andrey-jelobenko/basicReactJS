@@ -18,7 +18,7 @@ export const INITIAL_MESSAGE = {
 
 export const INIT_CHATS = {
   id0: {
-    name: "",
+    name: "Чаты группы  GU_web_1558",
     avatar: "",
     date: "",
     messages: [
