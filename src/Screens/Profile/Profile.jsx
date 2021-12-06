@@ -5,15 +5,15 @@ import { profileSelector } from "../../Store/Profile/selectors";
 
 export const Profile = () => {
   const dispatch = useDispatch();
-  const { message, checkName } = useSelector(profileSelector);
+  const { message, showName } = useSelector(profileSelector);
 
-  const handleTogglecheckName = () => {
+  const handleToggleshowName = () => {
     dispatch(toggleUserNameAction());
   };
   return (
     <>
-      <Checkbox onClick={handleTogglecheckName} />
-      <div>{checkName && message}</div>
+      <Checkbox onClick={handleToggleshowName} />
+      <div>{showName && message}</div>
     </>
   );
 };
