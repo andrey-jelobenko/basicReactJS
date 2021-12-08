@@ -8,7 +8,7 @@ import { USERS } from "../MessageList/constants";
 import "./styleMessageForm.scss";
 
 export function MessageForm({ messageList, setMessageList, chatId }) {
-  const author = USERS.me;
+  const author = USERS.ME;
   const [messageText, setMessageText] = useState("");
   const [modal, setModal] = useState(false);
   const [messageAlert, setMessageAlert] = useState("");
@@ -28,7 +28,7 @@ export function MessageForm({ messageList, setMessageList, chatId }) {
       setMessageAlert("Вы ничего не написали ...");
       return;
     }
-    if (author === USERS.bot) {
+    if (author === USERS.BOT) {
       setModal(true);
       setMessageAlert("Вы не можете оставлять сообщения от этого имени");
       return;
@@ -99,8 +99,4 @@ export function MessageForm({ messageList, setMessageList, chatId }) {
       />
     </>
   );
-}
-
-export function MultilineTextFields() {
-  return null;
 }

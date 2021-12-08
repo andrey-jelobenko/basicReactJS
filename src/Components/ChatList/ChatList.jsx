@@ -7,19 +7,16 @@ import {
   Avatar,
 } from "@mui/material/";
 import { deepOrange } from "@mui/material/colors";
-// import { chatList, INIT_CHATS } from "./constants";
 import "./ChatList.scss";
 import { useContext } from "react";
-import { myChatListContext } from "../../Router/context";
+import { MyChatListContext } from "../../Router/context";
 
-export function ChatList() {
-  const chatList = useContext(myChatListContext);
-  const newChatList = { ...chatList };
-  delete newChatList["id0"];
+export function ChatList({ chatId }) {
+  const chatList = useContext(MyChatListContext);
   return (
     <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
-      {Object.keys(newChatList).map((id) => (
-        <ListItem key={id}>
+      {Object.keys(chatList).map((id) => (
+        <ListItem key={id} selected={id === chatId ? true : false}>
           <Link className="link-chat" to={"/chats/" + id}>
             <ListItemAvatar>
               <Avatar sx={{ bgcolor: deepOrange[600] }}>
@@ -35,18 +32,4 @@ export function ChatList() {
       ))}
     </List>
   );
-  //   return (
-  //     <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
-  //       {chatList.map(({ id, name, avatar, date }) => (
-  //         <ListItem key={id}>
-  //           <Link className="link-chat" to={"/chats/" + id}>
-  //             <ListItemAvatar>
-  //               <Avatar sx={{ bgcolor: deepOrange[600] }}>{avatar}</Avatar>
-  //             </ListItemAvatar>
-  //             <ListItemText primary={name} secondary={date} />
-  //           </Link>
-  //         </ListItem>
-  //       ))}
-  //     </List>
-  //   );
 }

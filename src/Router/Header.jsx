@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 import { ROUTES } from "./constants";
 
 export const Header = () => {
-  const [value, setValue] = React.useState(0);
+  const [activeTab, setActiveTab] = React.useState(0);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleChange = (event, newActiveTab) => {
+    setActiveTab(newActiveTab);
   };
 
   return (
@@ -17,7 +17,7 @@ export const Header = () => {
       <Box sx={{ width: "100%" }}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
-            value={value}
+            value={activeTab}
             onChange={handleChange}
             aria-label="basic tabs example"
           >

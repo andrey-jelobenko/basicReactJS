@@ -8,14 +8,14 @@ import { ROUTES } from "./constants";
 import { Header } from "./Header";
 
 import { INIT_CHATS } from "../Components/ChatList/constants";
-import { myChatListContext } from "./context";
+import { MyChatListContext } from "./context";
 
 export const Router = () => {
   const [chatList] = useState(INIT_CHATS);
   return (
     <BrowserRouter>
       <Header />
-      <myChatListContext.Provider value={chatList}>
+      <MyChatListContext.Provider value={chatList}>
         <Switch>
           <Route exact path={ROUTES.HOME}>
             <Home />
@@ -30,7 +30,7 @@ export const Router = () => {
             <Redirect to={ROUTES.NOT_FOUND} />
           </Route>
         </Switch>
-      </myChatListContext.Provider>
+      </MyChatListContext.Provider>
     </BrowserRouter>
   );
 };
