@@ -26,25 +26,25 @@ const WELCOME_MESSAGE = [
 ];
 
 export const INIT_CHATS = {
-  id1: {
+  [uuidv4()]: {
     name: "Фотографии",
     avatar: "Ph",
     date: "Янв 9, 2014",
     messages: WELCOME_MESSAGE,
   },
-  id2: {
+  [uuidv4()]: {
     name: "Работа",
     avatar: "Wo",
     date: "Фев 7, 2017",
     messages: WELCOME_MESSAGE,
   },
-  id3: {
+  [uuidv4()]: {
     name: "Вакансии",
     avatar: "Va",
     date: "Июнь 15, 2014",
     messages: WELCOME_MESSAGE,
   },
-  id4: {
+  [uuidv4()]: {
     name: "Путешествия",
     avatar: "Jo",
     date: "Сент 20, 2016",
