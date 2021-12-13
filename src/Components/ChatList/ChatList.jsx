@@ -8,11 +8,8 @@ import {
 } from "@mui/material/";
 import { deepOrange } from "@mui/material/colors";
 import "./ChatList.scss";
-import { useContext } from "react";
-import { MyChatListContext } from "../../Router/context";
 
-export function ChatList({ chatId }) {
-  const chatList = useContext(MyChatListContext);
+export function ChatList({ chatId, chatList }) {
   return (
     <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
       {Object.keys(chatList).map((id) => (
