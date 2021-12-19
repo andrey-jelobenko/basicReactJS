@@ -1,7 +1,13 @@
 import { Avatar, Box, Typography, List, ListItem } from "@mui/material/";
 import "./styleMessageList.scss";
+import { useSelector } from "react-redux";
+import { messageListSelector } from "../../Store/Messages/selectors";
+import { WELCOME_MESSAGE } from "../ChatList/constants";
 
-export function MessageList({ messageList, chatName }) {
+export function MessageList({ chatId, chatName }) {
+  const { messages } = useSelector(messageListSelector);
+  const messageList = messages.messageList[chatId] ?? WELCOME_MESSAGE;
+
   return (
     <List>
       <Typography

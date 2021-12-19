@@ -6,20 +6,23 @@ import { v4 as uuidv4 } from "uuid";
 import { BasicModal } from "../Utils/BasicModal";
 import { USERS } from "../MessageList/constants";
 import "./styleMessageForm.scss";
+import { addMessageAction } from "../../Store/Messages/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { chatMessagesSelector } from "../../Store/Messages/selectors";
 
-export function MessageForm({ messageList, setMessageList, chatId }) {
+export function MessageForm({ chatId }) {
   const author = USERS.ME;
   const [messageText, setMessageText] = useState("");
   const [modal, setModal] = useState(false);
   const [messageAlert, setMessageAlert] = useState("");
   const [focus, setFocus] = useState(true);
   const inputRef = useRef(null);
+  const dispatch = useDispatch();
+  const messageListHere = useSelector(chatMessagesSelector({ chatId }));
 
   useEffect(() => {
     inputRef.current?.focus();
   }, [messageText, focus]);
-
-  if (chatId === "id0") return <></>;
 
   const handleTextChange = (e) => setMessageText(e.target.value);
   const handleAddMessage = (e) => {
@@ -40,7 +43,13 @@ export function MessageForm({ messageList, setMessageList, chatId }) {
     };
 
     setMessageText("");
-    return setMessageList([...messageList, newMessage]);
+
+    dispatch(
+      addMessageAction({
+        chatId: chatId,
+        messages: [...messageListHere, newMessage],
+      })
+    );
   };
   const handleReset = (e) => {
     setMessageText("");

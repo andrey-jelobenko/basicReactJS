@@ -3,3 +3,13 @@
   display: flex;
   align-items: center;
 }
+
+.delete-chat {
+  position: relative;
+  top: -24px;
+  left: -9px;
+}
+
+.delete-chat:hover {
+  cursor: pointer;
+}
