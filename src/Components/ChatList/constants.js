@@ -16,7 +16,7 @@ export const INITIAL_MESSAGE = {
   },
 };
 
-const WELCOME_MESSAGE = [
+export const WELCOME_MESSAGE = [
   { id: uuidv4(), text: "Добро пожаловать в чат.", author: USERS.BOT },
   {
     id: uuidv4(),
